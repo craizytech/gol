@@ -1,0 +1,13 @@
+package main
+
+func main() {
+	// ex1()
+	// ex2()
+	// ex3()
+	// ex4()
+	// ex5("15:04:05 Mon, 02-01-2006 MST")
+	// ex6()
+	// ex7()
+	// ex8()
+
+}
