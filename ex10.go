@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"math"
+)
 
 type point struct {
 	x float32
@@ -13,33 +16,46 @@ func newPoint(x, y, z float32) *point {
 	return &p
 }
 
+// length is a method with a value receiver
+func (p point) length() float64 {
+	return math.Sqrt(
+		(math.Pow(float64(p.x), 2) +
+			math.Pow(float64(p.y), 2) +
+			math.Pow(float64(p.z), 2)))
+}
+
+// move is a method with a pointer receiver
+func (p *point) move(deltax, deltay, deltaz float32) {
+	p.x += deltax
+	p.y += deltay
+	p.z += deltaz
+}
+
 func ex10() {
-	// createStruct := point{x: 5, y: 6, z: 7}
 
-	// pt1 := point{x: 2.2, z: 3.3}
-	// fmt.Println(pt1)
+	// pt4 := newPoint(3.2, 1.5, 6.2)
+	// pt5 := pt4
 
-	// new1 := createStruct
-	// new1 = point{x: 0}
+	// fmt.Println("pt4: ", pt4)
+	// fmt.Println("pt5: ", pt5)
 
-	// fmt.Println(createStruct, new1)
+	// fmt.Println("-----------")
+	// pt5.y = 3.14
 
-	pt4 := newPoint(3.2, 1.5, 6.2)
-	pt5 := pt4
+	// fmt.Println("pt4: ", pt4)
+	// fmt.Println("pt5: ", pt5)
 
-	fmt.Println("pt4: ", pt4)
-	fmt.Println("pt5: ", pt5)
+	// fmt.Println("-----------")
+	// pt6 := *pt4
+	// fmt.Println(pt6)
+	// pt6.y = 9.8
+	// fmt.Println(pt6)
 
-	fmt.Println("-----------")
-	pt5.y = 3.14
+	pt7 := newPoint(3, 4, 12)
+	fmt.Println(pt7.length())
 
-	fmt.Println("pt4: ", pt4)
-	fmt.Println("pt5: ", pt5)
+	fmt.Println(*pt7)
 
-	fmt.Println("-----------")
-	pt6 := *pt4
-	fmt.Println(pt6)
-	pt6.y = 9.8
-	fmt.Println(pt6)
-
+	pt7.move(1, 2, 3)
+	fmt.Println(*pt7)
 }
