@@ -1,3 +1,5 @@
+// decoding JSON to arrays
+
 package main
 
 import (
